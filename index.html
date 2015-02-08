@@ -5,7 +5,8 @@
 	<title>Beer Finder</title>
 	<link rel="stylesheet" href="main.css">
 	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
-	<script src="app.js"></script>
+	<script src="js/beer.js"></script>
+	<script src="js/app.js"></script>
 </head>
 <body>
 	<div class="container">
@@ -15,6 +16,7 @@
 				<h1>Beer Finder</h1>
 				<p>This app lets you search for beers.</p>
 				<p>Sometimes, you just need to find a strong beer. Enter an abv value and you can see beers at or above that value!</p>
+				<p>The breweries that are part of this database are limited at this time.  IE:  There aren't a lot of beers that you would expect.  Work in progress!</p>
 			</div>
 		</div>
 		<hr>
@@ -25,7 +27,7 @@
 				<input type="text" placeholder='e.g., "HTML" or "HTML;CSS"' name="tags" size="30" autofocus required>
 				<input type="submit" value="Submit">
 			</form>
-			<h3>View the Top Answerers for a Tag</h3>
+			<h3>Put in the ABV you are looking for and see the beers that match!</h3>
 			<form class="inspiration-getter" onsubmit="return false;">
 				<input type="text" placeholder="e.g., jQuery" name="answerers" size="30"  required>
 				<input type="submit" value="Submit">
