@@ -1,0 +1,11 @@
+Account Information
+Details for accessing the API with your account.
+
+Public Token
+For read-only applications and may be exposed publicly.
+
+8e6273b13a1d5005cf7a0c3e74555b9c9582781ebea27e5b4ff08003772d34df
+Private Token
+For creating and deleting records on your account and should be protected.
+
+12effb4d5a23672686f772f23b15b3e490fe29dacc3515e5c6dbd3677de0088b
