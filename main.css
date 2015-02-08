@@ -11,8 +11,8 @@
 	float: left;
 }
 
-.stack-image {
-	background: url('images/stack-icon.png') no-repeat center center;
+.beerToast-image {
+	background: url('images/beer_toast.jpg') no-repeat center center;
 	width: 200px;
 	height: 200px;
 	-webkit-background-size: cover;

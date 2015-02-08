@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Stack Overflow AJAX Demo</title>
+	<title>Beer Finder</title>
 	<link rel="stylesheet" href="main.css">
 	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 	<script src="app.js"></script>
@@ -10,17 +10,17 @@
 <body>
 	<div class="container">
 		<div class="intro">
-			<div class="left stack-image"></div>
+			<div class="left beerToast-image"></div>
 			<div class="explanation">
-				<h1>StackOverflow Reputation Builder</h1>
-				<p>This app lets you search by topic for unanswered questions on Stack Overflow to help you build your reputation.  Find unanswered questions for a topic you know about, write quality answers, and watch your reputation go up.</p>
-				<p>Sometimes, you also need some inspiration. This page also lets you search for the top answerers for a tag. If you want to rise to the top ranks for a topic, see how many reputation points you'll need to aim for!</p>
+				<h1>Beer Finder</h1>
+				<p>This app lets you search for beers.</p>
+				<p>Sometimes, you just need to find a strong beer. Enter an abv value and you can see beers at or above that value!</p>
 			</div>
 		</div>
 		<hr>
 		<div class="stack">	
-			<h3>Get Unanswered Questions</h3>
-			<p>Find unanswered questions by tag. For multiple tags, use a semi-colon to separate.</p>
+			<h3>Find A Beer By Name</h3>
+			<p>Search for beers using full or partial text.</p>
 			<form class="unanswered-getter" onsubmit="return false;">
 				<input type="text" placeholder='e.g., "HTML" or "HTML;CSS"' name="tags" size="30" autofocus required>
 				<input type="submit" value="Submit">
