@@ -60,3 +60,11 @@ dl,dt, dd {
 .asker {
 	padding: 0;
 }
+
+#abvChart {
+	width: 200px;
+	height: 100px;
+	background-color: lightblue;
+	border: 1px solid black;
+	margin-bottom: 10px;
+}
