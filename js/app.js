@@ -132,7 +132,6 @@ var getBeersByName = function(searchQuery) {
         })
         .done(function(result) {
             var searchResults = showSearchResults(request.query, result.beers.length);
-
             $('.search-results').html(searchResults);
 
             $.each(result.beers, function(i, item) {
@@ -148,47 +147,69 @@ var getBeersByName = function(searchQuery) {
 
 var getBeersByAbv = function(abvValue) {
 
-console.log("getBeersByAbv Called for: " + abvValue);
+    console.log("getBeersByAbv Called for: " + abvValue);
 
-var request = {
-    per_page: '500'
-};
+    var request = {
+        per_page: '500',
+        order: 'id DESC'
+    };
 
-// http://api.openbeerdatabase.com/v1/beers.json?query=ale
-var result = $.ajax({
-        url: "http://api.openbeerdatabase.com/v1/beers.json",
-        data: request,
-        dataType: "jsonp",
-        type: "GET",
-    })
-    .done(function(result) {
+    // http://api.openbeerdatabase.com/v1/beers.json?query=ale
+    var result = $.ajax({
+            url: "http://api.openbeerdatabase.com/v1/beers.json",
+            data: request,
+            dataType: "jsonp",
+            type: "GET",
+        })
+        .done(function(result) {
 
-            console.log(result.beers.length);
-            
-            $.each(result.beers, function(i, item) {
-                    
-                    console.log(item);
-                    console.log(item.name + " abvValue: " + item.abv);
-                    console.log("comparing beer: " + item.name + " with abv: " + item.abv + "to abv: " + abvValue);
-                    
-                    if (item.abv >= 0) {
-                        console.log("abv greater or equal - stays in results");
-                        console.log("items left: " + result.beers.length);
-                    }
-                    else{
-                        console.log("abv less, removing " + item.name + "from results");
-                        result.beers.splice(i-1, 1);
-                        console.log("items left: " + result.beers.length);
-                    } 
-                    });
+            beerList = result.beers;
+            console.log(beerList.length);
 
-                var searchResults = showSearchResults("Abv value at or above: " + abvValue, result.beers.length); 
-                $('.search-results').html(searchResults);
-            })
+            // $.each(result.beers, function(i, item)
+            //iterating in reverse so that splicing doesn't throw off the iteration    
+            for (var i = beerList.length -1; i>=0; i--) {
+                
+                console.log("i: " + i);
+                beerItem = beerList[i];
+                console.log(beerItem);
+                console.log(beerItem.name + " abvValue: " + beerItem.abv);
+                console.log("comparing beer: " + beerItem.name + " with abv: " + beerItem.abv + "to abv: " + abvValue);
+
+                if (beerItem.abv >= abvValue) {
+                    console.log("abv greater or equal - stays in results");
+                    console.log("items left: " + beerList.length);
+                    beerItem.showInAbvResults = true;    
+                } else {
+                    console.log("i : " + i);
+                    console.log("abv less, removing " + beerItem.name + "from results");
+                    beerList.splice(i, 1);
+                    // don't need to decrement if iterating in reverse.
+                    beerItem.showInAbvResults = false;
+                    console.log("i : " + i);
+                    console.log("items left: " + beerList.length);
+                }
+            }
+
+            var searchResults = showSearchResults("Abv value at or above: " + abvValue, beerList.length);
+            $('.search-results').html(searchResults);
+
+            // showBeerIfAbvHighEnough(beerList);
+
+        })
+
     .fail(function(jqXHR, error, errorThrown) {
         var errorElem = showError(error);
         $('.search-results').append(errorElem);
     });
 };
 
-
+var showBeerIfAbvHighEnough = function(beerResultList) {
+    //duplicate code to clean up
+    console.log("showbeer if abv called");
+    console.log("looping through beers for display logic");
+    $.each(beerResultList.beers, function(i, item) {
+        var beerResult = showBeer(item);
+        $('.results').append(beerResult);
+    });
+};
