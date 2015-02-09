@@ -185,7 +185,7 @@ var getBeersByAbv = function(abvValue) {
                     console.log("abv less, removing " + beerItem.name + "from results");
                     beerList.splice(i, 1);
                     // don't need to decrement if iterating in reverse.
-                    beerItem.showInAbvResults = false;
+                    beerItem.showInAbvResults = false; //could remove this and would still work
                     console.log("i : " + i);
                     console.log("items left: " + beerList.length);
                 }
@@ -194,7 +194,7 @@ var getBeersByAbv = function(abvValue) {
             var searchResults = showSearchResults("Abv value at or above: " + abvValue, beerList.length);
             $('.search-results').html(searchResults);
 
-            // showBeerIfAbvHighEnough(beerList);
+            showBeerIfAbvHighEnough(beerList);
 
         })
 
@@ -206,9 +206,10 @@ var getBeersByAbv = function(abvValue) {
 
 var showBeerIfAbvHighEnough = function(beerResultList) {
     //duplicate code to clean up
+    console.log(beerResultList);
     console.log("showbeer if abv called");
     console.log("looping through beers for display logic");
-    $.each(beerResultList.beers, function(i, item) {
+    $.each(beerResultList, function(i, item) {
         var beerResult = showBeer(item);
         $('.results').append(beerResult);
     });
